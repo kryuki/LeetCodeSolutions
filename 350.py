@@ -4,7 +4,7 @@ from collections import Counter
 class Solution:
     # solution1: Using two sets and counter
     # time: O(m + n), space: O(m + n)
-    def intersect(self, nums1, nums2):
+    def intersect(self, nums1: list[int], nums2: list[int]) -> list[int]:
         set1, set2 = set(nums1), set(nums2)
         counter1, counter2 = dict(Counter(nums1)), dict(Counter(nums2))
         intersect = set1.intersection(set2)
