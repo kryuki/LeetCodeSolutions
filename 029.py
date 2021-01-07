@@ -10,6 +10,13 @@ class Solution:
         else:
             return quotient
 
+    def findBiggestDivisor(self, dividend, divisor):
+        cur, quo = divisor, 1
+        while cur + cur <= dividend:
+            cur += cur
+            quo += quo
+        return [cur, quo]
+
     # solution1: Repeated Exponential Searches
     # time: O(logn * logn), space: O(1)
     def divide(self, dividend: int, divisor: int) -> int:
@@ -17,15 +24,8 @@ class Solution:
         dividend, divisor = abs(dividend), abs(divisor)
         quotient, rest = 0, dividend
 
-        def findBiggestDivisor(dividend, divisor):
-            cur, quo = divisor, 1
-            while cur + cur <= dividend:
-                cur += cur
-                quo += quo
-            return [cur, quo]
-
         while rest >= divisor:
-            biggest, addQuo = findBiggestDivisor(rest, divisor)
+            biggest, addQuo = self.findBiggestDivisor(rest, divisor)
             quotient += addQuo
             rest -= biggest
 
@@ -39,16 +39,7 @@ class Solution:
         quotient, rest = 0, dividend
         powers = [[0, 1]]
 
-        def findBiggestDivisor(dividend, divisor):
-            cur, quo = divisor, 1
-            powers.append([quo, cur])
-            while cur + cur <= dividend:
-                cur += cur
-                quo += quo
-                powers.append([quo, cur])
-            return [cur, quo]
-
-        biggest, addQuo = findBiggestDivisor(rest, divisor)
+        biggest, addQuo = self.findBiggestDivisor(rest, divisor)
         if rest >= biggest:
             quotient += addQuo
             rest -= biggest
