@@ -16,7 +16,7 @@ class Solution:
                 idxDict[char] = i
         return result
 
-    # solution2: using set
+    # solution2: use two indexes and set
     # time: O(n), space: O(n)
     def lengthOfLongestSubstring2(self, s: str) -> int:
         foundChar = set()
