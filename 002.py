@@ -6,6 +6,8 @@ class ListNode:
 
 
 class Solution:
+    # solution1: Elementary math
+    # time: O(max(L1, L2)), space: O(max(L1, L2))
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         output = ListNode()
         carry = 0
