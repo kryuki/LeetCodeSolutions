@@ -22,15 +22,10 @@ class Solution:
             for endP, endCnt in points.items():
                 numerator = endP[1] - startP[1]
                 denominator = endP[0] - startP[0]
-                try:
-                    grad = Fraction(numerator, denominator)
-                except:
-                    grad = math.inf
+                grad = Fraction(
+                    numerator, denominator) if denominator != 0 else math.inf
                 gradDic[grad] += endCnt
-            if gradDic:
-                maxValue = max(gradDic.values())
-            else:
-                maxValue = 0
-            result = max(result, maxValue + startCnt)
+            maxCnt = max(gradDic.values()) if gradDic else 0
+            result = max(result, maxCnt + startCnt)
 
         return result
