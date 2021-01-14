@@ -32,7 +32,7 @@ class Solution:
             if length > longestSoFar:
                 longestSoFar = length
                 bestL, bestR = l, r
-        return self.cutSpace(spaced_s[bestL: bestR + 1])
+        return spaced_s[bestL: bestR + 1].replace(" ", "")
 
     def countLongest(self, s, i):
         length = 0 if s[i] == " " else 1
@@ -43,6 +43,3 @@ class Solution:
             l -= 1
             r += 1
         return length, l + 1, r - 1
-
-    def cutSpace(self, s):
-        return "".join([char if char != " " else "" for char in s])
