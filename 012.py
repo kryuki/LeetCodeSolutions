@@ -1,4 +1,6 @@
 class Solution:
+    #solution1: Hardcode digits
+    #time: O(1), space: O(1)
     def intToRoman(self, num: int) -> str:
         output = ""
         L = len(str(num))
